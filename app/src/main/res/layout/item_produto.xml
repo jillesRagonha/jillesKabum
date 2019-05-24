@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        >
+
+    <android.support.v7.widget.CardView
+            android:layout_width="0dp"
+            android:layout_height="200dp"
+            android:layout_margin="@dimen/default_margin_card_view"
+            android:elevation="16dp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintVertical_bias="0"
+            >
+
+        <android.support.constraint.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                >
+
+            <ImageView
+                    android:id="@+id/item_produto_imagem_fabricante"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    android:contentDescription="Imagem do fabricante"
+                    android:layout_margin="8dp"
+                    tools:src="@drawable/fabricante"
+                    />
+
+            <ImageView
+                    android:id="@+id/item_produto_icone_favorito"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_favorito"
+                    app:layout_constraintTop_toTopOf="@id/item_produto_imagem_fabricante"
+                    app:layout_constraintBottom_toBottomOf="@id/item_produto_imagem_fabricante"
+                    app:layout_constraintStart_toEndOf="@id/item_produto_imagem_fabricante"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.8"
+                    />
+
+            <ImageView
+                    android:id="@+id/item_produto_icone_carrinho"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_carrinho"
+                    app:layout_constraintTop_toTopOf="@id/item_produto_icone_favorito"
+                    app:layout_constraintBottom_toBottomOf="@id/item_produto_icone_favorito"
+                    app:layout_constraintStart_toEndOf="@id/item_produto_icone_favorito"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    />
+
+            <TextView
+                    android:id="@+id/item_produto_nome"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    tools:text="Placa de Vídeo VGA Zotac NVIDIA GeForce RTX 2080 Ti Triple Fan 11GB, GDDR6, 352 bits, PCI-E 3.0 - ZT-T20810F-10P"
+                    app:layout_constraintStart_toEndOf="@id/item_produto_imagem_produto"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@id/item_produto_imagem_produto"
+                    android:textStyle="bold"
+                    android:padding="8dp"
+                    android:textSize="12sp"
+                    />
+
+            <ImageView
+                    android:id="@+id/item_produto_imagem_produto"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    app:layout_constraintTop_toBottomOf="@id/item_produto_imagem_fabricante"
+                    app:layout_constraintStart_toStartOf="@id/item_produto_imagem_fabricante"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    tools:src="@drawable/produto"
+                    />
+
+            <RatingBar
+                    android:id="@+id/item_produto_avaliacao"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintTop_toBottomOf="@id/item_produto_nome"
+                    app:layout_constraintStart_toStartOf="@id/item_produto_nome"
+                    app:layout_constraintHorizontal_bias="0"
+                    android:layout_marginStart="8dp"
+                    style="@android:style/Widget.Material.RatingBar.Small"
+                    android:rating="5"
+                    android:numStars="5"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    />
+
+            <TextView
+                    android:id="@+id/item_produto_valor_avaliacao"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    tools:text="713"
+                    app:layout_constraintStart_toEndOf="@id/item_produto_avaliacao"
+                    app:layout_constraintTop_toTopOf="@id/item_produto_avaliacao"
+                    app:layout_constraintBottom_toBottomOf="@id/item_produto_avaliacao"
+                    android:fontFamily="sans-serif-condensed-light"
+                    />
+
+            <TextView
+                    android:id="@+id/item_produto_preco_desconto"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintTop_toBottomOf="@id/item_produto_avaliacao"
+                    app:layout_constraintStart_toStartOf="@id/item_produto_avaliacao"
+                    tools:text="R$ 229,90"
+                    android:textColor="#0D900A"
+                    android:textStyle="bold"
+                    android:textSize="18sp"
+                    />
+
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="#0D900A"
+                    android:text="à vista"
+                    android:textSize="12sp"
+                    app:layout_constraintStart_toEndOf="@id/item_produto_preco_desconto"
+                    app:layout_constraintTop_toTopOf="@id/item_produto_preco_desconto"
+                    app:layout_constraintBottom_toBottomOf="@id/item_produto_preco_desconto"
+                    android:layout_marginStart="4dp"
+                    android:textStyle="bold"
+                    />
+
+            <TextView
+                    android:id="@+id/item_produto_preco_normal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintTop_toBottomOf="@id/item_produto_preco_desconto"
+                    app:layout_constraintStart_toStartOf="@id/item_produto_preco_desconto"
+                    tools:text="R$ 270,47"
+                    android:textSize="12sp"
+                    />
+
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintTop_toBottomOf="@id/item_produto_preco_desconto"
+                    app:layout_constraintStart_toEndOf="@id/item_produto_preco_normal"
+                    android:layout_marginStart="4dp"
+                    android:text=" em até 12x"
+                    android:textSize="12sp"
+                    />
+
+
+        </android.support.constraint.ConstraintLayout>
+
+    </android.support.v7.widget.CardView>
+
+</android.support.constraint.ConstraintLayout>
