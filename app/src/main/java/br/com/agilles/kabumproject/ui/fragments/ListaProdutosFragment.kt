@@ -20,9 +20,19 @@ class ListaProdutosFragment : Fragment() {
         return view
     }
 
+    private fun mostraProgressBar() {
+        if (lista_produtos_progress_bar.visibility == View.GONE && lista_produtos_texto_loading.visibility == View.GONE) {
+            lista_produtos_progress_bar.visibility = View.VISIBLE
+            lista_produtos_texto_loading.visibility = View.VISIBLE
+            lista_produtos_recycler_view.visibility = View.GONE
+        }
+    }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         configuraToolbar()
+        mostraProgressBar()
+
         /**
          * Por ter enviado a interface como parâmetro, agora consigo sobrescrever o método aqui
          * que vai ser chamado sempre que houver sucesso na requisição
@@ -37,8 +47,8 @@ class ListaProdutosFragment : Fragment() {
 
     private fun configuraToolbar() {
         if (activity is AppCompatActivity) {
-            with(activity as AppCompatActivity){
-                toolbar.title=""
+            with(activity as AppCompatActivity) {
+                toolbar.title = ""
                 setSupportActionBar(toolbar)
 
 
@@ -59,12 +69,15 @@ class ListaProdutosFragment : Fragment() {
                 adapter = ProdutosAdapter(produtos, context)
             }
         }
-
-
+        mostraRecyclerView()
     }
 
-    private fun produtos() {
-
+    private fun mostraRecyclerView() {
+        if (lista_produtos_progress_bar.visibility == View.VISIBLE && lista_produtos_texto_loading.visibility == View.VISIBLE) {
+            lista_produtos_progress_bar.visibility = View.GONE
+            lista_produtos_texto_loading.visibility = View.GONE
+            lista_produtos_recycler_view.visibility = View.VISIBLE
+        }
     }
 
 }
