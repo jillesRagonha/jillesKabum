@@ -11,9 +11,11 @@ import com.bumptech.glide.Glide
 import kotlinx.android.synthetic.main.item_produto.view.*
 
 class ProdutosAdapter(
-    private val produtos:  List<Produto> = listOf(),
+    private val produtos: List<Produto> = listOf(),
     private val context: Context
 ) : RecyclerView.Adapter<ProdutosAdapter.ViewHolder>() {
+
+
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {

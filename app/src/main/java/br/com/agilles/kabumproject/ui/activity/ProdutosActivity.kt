@@ -4,8 +4,10 @@ import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentManager
 import android.support.v7.app.AppCompatActivity
+import android.view.Menu
 import br.com.agilles.kabumproject.R
 import br.com.agilles.kabumproject.ui.fragments.ListaProdutosFragment
+import kotlinx.android.synthetic.main.fragment_lista_produtos.*
 
 class ProdutosActivity : AppCompatActivity() {
 
@@ -25,7 +27,6 @@ class ProdutosActivity : AppCompatActivity() {
             }
             commit()
         }
-
 
 
     }

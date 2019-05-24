@@ -3,9 +3,8 @@ package br.com.agilles.kabumproject.ui.fragments
 
 import android.os.Bundle
 import android.support.v4.app.Fragment
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.support.v7.app.AppCompatActivity
+import android.view.*
 import br.com.agilles.kabumproject.R
 import br.com.agilles.kabumproject.models.Produto
 import br.com.agilles.kabumproject.retrofit.ProdutoResponse
@@ -17,16 +16,18 @@ class ListaProdutosFragment : Fragment() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val view = inflater.inflate(R.layout.fragment_lista_produtos, container, false)
+        setHasOptionsMenu(true)
         return view
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        configuraToolbar()
         /**
          * Por ter enviado a interface como parâmetro, agora consigo sobrescrever o método aqui
          * que vai ser chamado sempre que houver sucesso na requisição
          */
-        ProdutoWebClient().listarProdutos(object :ProdutoResponse{
+        ProdutoWebClient().listarProdutos(object : ProdutoResponse {
             override fun sucess(produtos: List<Produto>) {
                 configuraLista(produtos)
             }
@@ -34,13 +35,28 @@ class ListaProdutosFragment : Fragment() {
         })
     }
 
+    private fun configuraToolbar() {
+        if (activity is AppCompatActivity) {
+            with(activity as AppCompatActivity){
+                toolbar.title=""
+                setSupportActionBar(toolbar)
+
+
+            }
+        }
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu?, inflater: MenuInflater?) {
+        inflater?.inflate(R.menu.toolbar_menu, menu)
+        super.onCreateOptionsMenu(menu, inflater)
+    }
+
 
     fun configuraLista(produtos: List<Produto>) {
         val recyclerView = lista_produtos_recycler_view
         with(recyclerView) {
             context?.let {
-                recyclerView.adapter = ProdutosAdapter(produtos, context)
-
+                adapter = ProdutosAdapter(produtos, context)
             }
         }
 
