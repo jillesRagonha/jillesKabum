@@ -5,6 +5,7 @@ import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import br.com.agilles.kabumproject.R
 import br.com.agilles.kabumproject.models.Produto
 import com.bumptech.glide.Glide
@@ -14,9 +15,6 @@ class ProdutosAdapter(
     private val produtos: List<Produto> = listOf(),
     private val context: Context
 ) : RecyclerView.Adapter<ProdutosAdapter.ViewHolder>() {
-
-
-
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view = LayoutInflater.from(context).inflate(R.layout.item_produto, parent, false)
@@ -34,12 +32,22 @@ class ProdutosAdapter(
 
 
     class ViewHolder(
-        itemView: View
-    ) : RecyclerView.ViewHolder(itemView) {
+        itemView: View) : RecyclerView.ViewHolder(itemView) {
 
         fun bindView(produto: Produto) {
             insereValores(produto)
             insereImagens(produto)
+            lidaComCliques(produto)
+        }
+
+        private fun lidaComCliques(produto: Produto) {
+            itemView.item_produto_icone_favorito.setOnClickListener {
+                Toast.makeText(it.context, "Clicou no favoritos", Toast.LENGTH_SHORT).show()
+            }
+            itemView.item_produto_icone_carrinho.setOnClickListener {
+                Toast.makeText(it.context, "Clicou no carrinho", Toast.LENGTH_SHORT).show()
+            }
+
         }
 
         private fun insereValores(produto: Produto) {

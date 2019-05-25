@@ -21,7 +21,7 @@ class ProdutoWebClient {
         val call = RetrofitInit().produtoService().list()
         call.enqueue(object : Callback<ProdutosDTO>{
             override fun onResponse(call: Call<ProdutosDTO>, response: Response<ProdutosDTO>) {
-                response?.body()?.let {
+                response.body()?.let {
                     val produtos = it.produtos
                     produtoResponse.sucess(produtos)
                 }
