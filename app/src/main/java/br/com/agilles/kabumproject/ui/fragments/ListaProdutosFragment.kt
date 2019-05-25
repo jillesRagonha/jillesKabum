@@ -20,28 +20,20 @@ class ListaProdutosFragment : Fragment() {
         return view
     }
 
-    private fun mostraProgressBar() {
-        if (lista_produtos_progress_bar.visibility == View.GONE && lista_produtos_texto_loading.visibility == View.GONE) {
-            lista_produtos_progress_bar.visibility = View.VISIBLE
-            lista_produtos_texto_loading.visibility = View.VISIBLE
-            lista_produtos_recycler_view.visibility = View.GONE
-        }
-    }
+
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         configuraToolbar()
         mostraProgressBar()
+        carregaListaProdutos()
+    }
 
-        /**
-         * Por ter enviado a interface como parâmetro, agora consigo sobrescrever o método aqui
-         * que vai ser chamado sempre que houver sucesso na requisição
-         */
+    private fun carregaListaProdutos() {
         ProdutoWebClient().listarProdutos(object : ProdutoResponse {
             override fun sucess(produtos: List<Produto>) {
                 configuraLista(produtos)
             }
-
         })
     }
 
@@ -50,8 +42,6 @@ class ListaProdutosFragment : Fragment() {
             with(activity as AppCompatActivity) {
                 toolbar.title = ""
                 setSupportActionBar(toolbar)
-
-
             }
         }
     }
@@ -60,7 +50,6 @@ class ListaProdutosFragment : Fragment() {
         inflater?.inflate(R.menu.toolbar_menu, menu)
         super.onCreateOptionsMenu(menu, inflater)
     }
-
 
     fun configuraLista(produtos: List<Produto>) {
         val recyclerView = lista_produtos_recycler_view
@@ -77,6 +66,14 @@ class ListaProdutosFragment : Fragment() {
             lista_produtos_progress_bar.visibility = View.GONE
             lista_produtos_texto_loading.visibility = View.GONE
             lista_produtos_recycler_view.visibility = View.VISIBLE
+        }
+    }
+
+    private fun mostraProgressBar() {
+        if (lista_produtos_progress_bar.visibility == View.GONE && lista_produtos_texto_loading.visibility == View.GONE) {
+            lista_produtos_progress_bar.visibility = View.VISIBLE
+            lista_produtos_texto_loading.visibility = View.VISIBLE
+            lista_produtos_recycler_view.visibility = View.GONE
         }
     }
 

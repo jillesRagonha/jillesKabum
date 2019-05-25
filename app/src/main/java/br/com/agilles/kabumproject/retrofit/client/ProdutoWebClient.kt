@@ -18,7 +18,7 @@ class ProdutoWebClient {
      * que vai retornar sucess
      */
     fun listarProdutos(produtoResponse: ProdutoResponse){
-        val call = RetrofitInit().produtoService().list()
+        val call = RetrofitInit().produtoService().list(app = 1, limite = 5, pagina = 2)
         call.enqueue(object : Callback<ProdutosDTO>{
             override fun onResponse(call: Call<ProdutosDTO>, response: Response<ProdutosDTO>) {
                 response.body()?.let {
