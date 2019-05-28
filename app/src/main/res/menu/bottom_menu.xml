@@ -2,19 +2,19 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
       xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
-            android:title="Home"
+            android:title="@string/menu_home"
             android:icon="@drawable/ic_home"
 
             />
     <item
-            android:title="Categorias"
+            android:title="@string/menu_categorias"
             android:icon="@drawable/ic_categorias"/>
     <item
-            android:title="Favoritos"
+            android:title="@string/menu_favoritos"
             android:icon="@drawable/ic_favorito_branco"
             />
     <item
-            android:title="Minha Conta"
+            android:title="@string/menu_minha_conta"
             android:icon="@drawable/ic_minha_conta"/>
 
 

@@ -1,4 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <dimen name="default_margin_card_view">5dp</dimen>
+    <dimen name="appbar_height">200dp</dimen>
+    <dimen name="lista_produtos_altura_card">200dp</dimen>
+    <dimen name="card_elevation">16dp</dimen>
+    <dimen name="produto_fabricante_imagem_largura">50dp</dimen>
+    <dimen name="produto_fabricante_imagem_altura">50dp</dimen>
+    <dimen name="default_margin">8dp</dimen>
+    <dimen name="default_padding">8dp</dimen>
+    <dimen name="texto_padrao">12sp</dimen>
+    <dimen name="produto_imagem_alt_larg">100dp</dimen>
+    <dimen name="produto_preco_tamanho_texto">18sp</dimen>
 </resources>

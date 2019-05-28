@@ -5,4 +5,14 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="imagem_banner">Imagem Banner</string>
     <string name="carregando_ocorrencias_aguarde">Carregando....</string>
+    <string name="lista_produtos_destaque">Produtos em Destaque</string>
+    <string name="logo_fabricante_content_description">Imagem do fabricante</string>
+    <string name="produto_texto_a_vista">à vista</string>
+    <string name="produto_parcelamento_em">em até 12x</string>
+    <string name="menu_categorias">Categorias</string>
+    <string name="menu_home">Home</string>
+    <string name="menu_favoritos">Favoritos</string>
+    <string name="menu_minha_conta">Minha Conta</string>
+    <string name="menu_pesquisar">Pesquisar</string>
+    <string name="menu_carrinho">Carrinho</string>
 </resources>

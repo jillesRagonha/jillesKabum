@@ -99,6 +99,7 @@ class ListaProdutosFragment : Fragment() {
             lista_produtos_progress_bar.visibility = View.GONE
             lista_produtos_texto_loading.visibility = View.GONE
             lista_produtos_recycler_view.visibility = View.VISIBLE
+            bottom_menu.visibility = View.VISIBLE
         }
     }
 
