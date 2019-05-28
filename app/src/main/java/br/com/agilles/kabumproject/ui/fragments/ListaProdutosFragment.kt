@@ -3,7 +3,6 @@ package br.com.agilles.kabumproject.ui.fragments
 
 import android.os.Bundle
 import android.support.v4.app.Fragment
-import android.support.v4.widget.NestedScrollView
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.RecyclerView
 import android.view.*
@@ -12,6 +11,7 @@ import br.com.agilles.kabumproject.R
 import br.com.agilles.kabumproject.models.Produto
 import br.com.agilles.kabumproject.retrofit.ProdutoResponse
 import br.com.agilles.kabumproject.retrofit.client.ProdutoWebClient
+import br.com.agilles.kabumproject.ui.adapter.EndlessScroll
 import br.com.agilles.kabumproject.ui.adapter.ProdutosAdapter
 import kotlinx.android.synthetic.main.fragment_lista_produtos.*
 
@@ -60,12 +60,13 @@ class ListaProdutosFragment : Fragment() {
     }
 
     override fun onCreateOptionsMenu(menu: Menu?, inflater: MenuInflater?) {
-        inflater?.inflate(br.com.agilles.kabumproject.R.menu.toolbar_menu, menu)
+        inflater?.inflate(R.menu.toolbar_menu, menu)
         super.onCreateOptionsMenu(menu, inflater)
     }
 
     fun configuraLista(produtos: List<Produto>) {
         mostraRecyclerView()
+        lista_produtos_recycler_view.adapter?.notifyDataSetChanged()
         configuraRecyclerView(produtos)
     }
 
@@ -79,24 +80,17 @@ class ListaProdutosFragment : Fragment() {
         }
         adicionaScrollListener(recyclerView)
 
-
-
     }
 
     private fun adicionaScrollListener(recyclerView: RecyclerView) {
-        nested_scroll.setOnScrollChangeListener(NestedScrollView.OnScrollChangeListener { v, _, scrollY, _, oldY ->
-            v?.let {
-                if (v.getChildAt(v.childCount - 1) != null) {
-                    if ((scrollY >= (v.getChildAt(v.childCount - 1).measuredHeight - v.measuredHeight)) && scrollY > oldY) {
-                        Toast.makeText(context, "Carregando...", Toast.LENGTH_SHORT).show()
-                        pagina++
-                        carregaListaProdutos(pagina)
-                        recyclerView.adapter?.notifyDataSetChanged()
-                    }
-                }
-
+        recyclerView.addOnScrollListener(object : EndlessScroll() {
+            override fun carregaMaisItens() {
+                Toast.makeText(context, "Carregando...", Toast.LENGTH_SHORT).show()
+                pagina++
+                carregaListaProdutos(pagina)
             }
         })
+
     }
 
 
