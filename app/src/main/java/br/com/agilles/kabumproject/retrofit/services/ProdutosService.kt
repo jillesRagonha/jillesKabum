@@ -13,7 +13,7 @@ interface ProdutosService {
     @GET("produto")
     fun list(
         @Query("app") app: Int,
-        @Query("limite") limite: Int,
-        @Query("pagina") pagina: Int
+        @Query("pagina") pagina: Int,
+        @Query("limite")limite:Int = 10
     ): Call<ProdutosDTO>
 }

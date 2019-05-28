@@ -4,4 +4,5 @@ import br.com.agilles.kabumproject.models.Produto
 
 interface ProdutoResponse {
     fun sucess(produtos: List<Produto>)
+    fun falha(msg: String)
 }

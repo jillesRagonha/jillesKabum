@@ -1,6 +1,7 @@
 package br.com.agilles.kabumproject.retrofit.client
 
 import android.util.Log
+import android.widget.Toast
 import br.com.agilles.kabumproject.dto.ProdutosDTO
 import br.com.agilles.kabumproject.retrofit.ProdutoResponse
 import br.com.agilles.kabumproject.retrofit.RetrofitInit
@@ -17,17 +18,24 @@ class ProdutoWebClient {
      * Mando uma interface como parâmetro no método
      * que vai retornar sucess
      */
-    fun listarProdutos(produtoResponse: ProdutoResponse){
-        val call = RetrofitInit().produtoService().list(app = 1, limite = 5, pagina = 2)
-        call.enqueue(object : Callback<ProdutosDTO>{
+    fun listarProdutos(produtoResponse: ProdutoResponse, app: Int, pagina: Int) {
+
+        val call = RetrofitInit().produtoService().list(app, pagina)
+        call.enqueue(object : Callback<ProdutosDTO> {
             override fun onResponse(call: Call<ProdutosDTO>, response: Response<ProdutosDTO>) {
-                response.body()?.let {
-                    val produtos = it.produtos
-                    produtoResponse.sucess(produtos)
-                }
+                if (response.code() == 200)
+                    response.body()?.let {
+                        if (it.produtos.isNotEmpty()) {
+                            val produtos = it.produtos
+                            produtoResponse.sucess(produtos)
+                        }
+
+                    }
             }
+
             override fun onFailure(call: Call<ProdutosDTO>, t: Throwable) {
                 Log.e("onFailure error", t.message)
+                produtoResponse.falha("erro ao recuperar a lista de produtos")
             }
         })
 
